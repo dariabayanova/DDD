@@ -19,6 +19,7 @@
           </e>
         </e>
         <e p="Tests.csproj" t="IncludeRecursive" />
+        <e p="WhenGameInits.cs" t="Include" />
         <e p="WhenGameStarts.cs" t="Include" />
       </e>
     </e>
