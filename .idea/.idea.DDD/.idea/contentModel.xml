@@ -9,6 +9,7 @@
         <e p="Card.cs" t="Include" />
         <e p="Column.cs" t="Include" />
         <e p="Columns.cs" t="Include" />
+        <e p="ColumnType.cs" t="Include" />
         <e p="Game.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
