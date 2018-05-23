@@ -1,7 +1,7 @@
 ﻿using Domain;
 using NUnit.Framework;
 
-namespace Tests
+namespace UnitTests
 {
     [TestFixture]
     public class WhenGameStarts

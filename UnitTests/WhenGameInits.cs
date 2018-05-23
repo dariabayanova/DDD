@@ -2,7 +2,7 @@ using System.Linq;
 using Domain;
 using NUnit.Framework;
 
-namespace Tests
+namespace UnitTests
 {
     [TestFixture]
     public class WhenGameInits
