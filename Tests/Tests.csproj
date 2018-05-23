@@ -11,4 +11,10 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
     <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{B59A9BBD-0BC6-4F93-9898-FA818FFF38C9}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

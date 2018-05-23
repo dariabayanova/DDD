@@ -1,4 +1,5 @@
 using System.Linq;
+using Domain;
 using NUnit.Framework;
 
 namespace Tests

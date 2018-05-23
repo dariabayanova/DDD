@@ -4,12 +4,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 12.0.0.0
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{C769C792-F207-4003-901B-8F285A1BDEE8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{B59A9BBD-0BC6-4F93-9898-FA818FFF38C9}"
+EndProject
 Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C769C792-F207-4003-901B-8F285A1BDEE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C769C792-F207-4003-901B-8F285A1BDEE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C769C792-F207-4003-901B-8F285A1BDEE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C769C792-F207-4003-901B-8F285A1BDEE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B59A9BBD-0BC6-4F93-9898-FA818FFF38C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B59A9BBD-0BC6-4F93-9898-FA818FFF38C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B59A9BBD-0BC6-4F93-9898-FA818FFF38C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B59A9BBD-0BC6-4F93-9898-FA818FFF38C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

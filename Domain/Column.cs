@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Tests
+namespace Domain
 {
     public class Column
     {

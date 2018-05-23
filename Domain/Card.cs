@@ -1,4 +1,4 @@
-namespace Tests
+namespace Domain
 {
     public class Card
     {
