@@ -9,7 +9,7 @@ namespace Tests
             Type = type;
         }
 
-        public ColumnType Type { get; private set; }
+        public ColumnType Type { get; }
         public List<Card> Cards { get; } = new List<Card>();
     }
 }
