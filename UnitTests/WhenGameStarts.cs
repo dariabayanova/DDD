@@ -1,4 +1,5 @@
-﻿using Domain;
+﻿using System.Collections.Generic;
+using Domain;
 using Moq;
 using NUnit.Framework;
 
@@ -8,25 +9,29 @@ namespace UnitTests
     public class WhenGameStarts
     {
         [Test]
-        public void GameHasCardsInToDoColumn()
-        {
-        	var game = new Game();
-
-            game.Start();
-
-            var toDoCards = game.Columns.Backlog.Cards;
-            Assert.That(toDoCards.Count, Is.GreaterThan(0));
-        }
-
-        [Test]
         public void GameGenerates10Cards()
         {
             var gameMock = new Mock<Game>();
             gameMock.Setup(_ => _.GenerateCards(10));
 
-            gameMock.Object.Start();
+            gameMock.Object.Start(Create3Players());
 
             gameMock.Verify(_ => _.GenerateCards(10), Times.Exactly(1));
+        }
+
+        [Test]
+        public void GameHas3Players()
+        {
+        	var game = new Game();
+
+            game.Start(Create3Players());
+
+            Assert.That(game.Players.Count, Is.EqualTo(3));
+        }
+
+        private static List<Player> Create3Players()
+        {
+            return new List<Player>{new Player(), new Player(), new Player()};
         }
     }
 }
