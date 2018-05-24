@@ -4,6 +4,7 @@
     <e p="C:\Projects\dbayanova\DDD" t="IncludeFlat">
       <e p="DDD.sln" t="IncludeFlat" />
       <e p="Domain" t="IncludeRecursive">
+        <e p="BacklogColumn.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Card.cs" t="Include" />
         <e p="Column.cs" t="Include" />
