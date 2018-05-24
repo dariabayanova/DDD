@@ -28,7 +28,7 @@ namespace Domain
         public Columns()
         {
             Add(new BacklogColumn());
-            Add(new Column(ColumnType.InProgress));
+            Add(new InProgressColumn());
             Add(new Column(ColumnType.Testing));
             Add(new Column(ColumnType.Done));
         }
