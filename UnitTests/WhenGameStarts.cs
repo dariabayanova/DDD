@@ -16,7 +16,7 @@ namespace UnitTests
 
             gameMock.Object.Start(Create3Players());
 
-            gameMock.Verify(_ => _.GenerateCards(10), Times.Exactly(1));
+            gameMock.Verify(_ => _.GenerateCards(10), Times.Once);
         }
 
         [Test]

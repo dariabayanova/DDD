@@ -1,4 +1,5 @@
-﻿using Domain;
+﻿using System;
+using Domain;
 using Moq;
 using NUnit.Framework;
 
@@ -8,25 +9,21 @@ namespace UnitTests
     public class WhenFlipCoin
     {
         [Test]
-        public void CoinReturnsTails()
+        public void CoinCallsRandomizer()
         {
             var coinMock = new Mock<Coin>();
-            coinMock.Setup(_ => _.Flip()).Returns(SideOfCoin.Tails);
+            coinMock.Setup(_ => _.GetRandomizer()).Returns(RandomMock().Object);
 
-            var tails = coinMock.Object.Flip();
+            coinMock.Object.Flip();
 
-            Assert.That(tails, Is.EqualTo(SideOfCoin.Tails));
+            coinMock.Verify(_ => _.GetRandomizer(), Times.Once);
         }
 
-        [Test]
-        public void CoinReturnsHeads()
+        private static Mock<Random> RandomMock()
         {
-            var coinMock = new Mock<Coin>();
-            coinMock.Setup(_ => _.Flip()).Returns(SideOfCoin.Heads);
-
-            var heads = coinMock.Object.Flip();
-
-            Assert.That(heads, Is.EqualTo(SideOfCoin.Heads));
+            var random = new Mock<Random>();
+            random.Setup(_ => _.NextDouble()).Returns(0.1);
+            return random;
         }
     }
 }
