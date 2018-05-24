@@ -2,7 +2,7 @@
 {
     public class Coin
     {
-        public SideOfCoin Flip()
+        public virtual SideOfCoin Flip()
         {
             return SideOfCoin.Tails;
         }

@@ -1,4 +1,5 @@
 ﻿using Domain;
+using Moq;
 using NUnit.Framework;
 
 namespace UnitTests
@@ -9,11 +10,23 @@ namespace UnitTests
         [Test]
         public void CoinReturnsTails()
         {
-            var coin = new Coin();
+            var coinMock = new Mock<Coin>();
+            coinMock.Setup(_ => _.Flip()).Returns(SideOfCoin.Tails);
 
-            var tails = coin.Flip();
+            var tails = coinMock.Object.Flip();
 
             Assert.That(tails, Is.EqualTo(SideOfCoin.Tails));
+        }
+
+        [Test]
+        public void CoinReturnsHeads()
+        {
+            var coinMock = new Mock<Coin>();
+            coinMock.Setup(_ => _.Flip()).Returns(SideOfCoin.Heads);
+
+            var heads = coinMock.Object.Flip();
+
+            Assert.That(heads, Is.EqualTo(SideOfCoin.Heads));
         }
     }
 }
