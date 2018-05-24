@@ -14,5 +14,14 @@ namespace UnitTests
 
             Assert.AreEqual(0, backlogCards.Count);
         }
+
+        [Test]
+        public void InProgressColumnHasNoCards()
+        {
+            var game = new Game();
+            var inProgressCards = game.Columns.InProgress.Cards;
+
+            Assert.AreEqual(0, inProgressCards.Count);
+        }
     }
 }

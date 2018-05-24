@@ -10,6 +10,11 @@ namespace Domain
             get { return this.First(_ => _.Type == ColumnType.ToDo); }
         }
 
+        public Column InProgress
+        {
+            get { return this.First(_ => _.Type == ColumnType.InProgress); }
+        }
+
         public Columns()
         {
             Add(new Column(ColumnType.ToDo));
