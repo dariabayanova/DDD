@@ -2,9 +2,6 @@ namespace Domain
 {
     public class InProgressColumn : Column
     {
-        public InProgressColumn() : base(ColumnType.InProgress)
-        {
-
-        }
+        public override ColumnType Type => ColumnType.InProgress;
     }
 }

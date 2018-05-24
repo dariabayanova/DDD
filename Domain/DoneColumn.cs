@@ -2,9 +2,6 @@ namespace Domain
 {
     public class DoneColumn : Column
     {
-        public DoneColumn() : base(ColumnType.Done)
-        {
-            
-        }
+        public override ColumnType Type => ColumnType.Done;
     }
 }

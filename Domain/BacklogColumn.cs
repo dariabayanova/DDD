@@ -2,9 +2,6 @@ namespace Domain
 {
     public class BacklogColumn : Column
     {
-        public BacklogColumn() : base(ColumnType.Backlog)
-        {
-
-        }
+        public override ColumnType Type => ColumnType.Backlog;
     }
 }
