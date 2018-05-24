@@ -13,7 +13,7 @@ namespace UnitTests
 
             game.Start();
 
-            var toDoCards = game.Columns.ToDo.Cards;
+            var toDoCards = game.Columns.Backlog.Cards;
             Assert.That(toDoCards.Count, Is.GreaterThan(0));
         }
     }

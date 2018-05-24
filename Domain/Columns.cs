@@ -5,7 +5,7 @@ namespace Domain
 {
     public class Columns : List<Column>
     {
-        public Column ToDo
+        public Column Backlog
         {
             get { return this.First(_ => _.Type == ColumnType.ToDo); }
         }

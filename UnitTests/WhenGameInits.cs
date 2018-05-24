@@ -1,4 +1,3 @@
-using System.Linq;
 using Domain;
 using NUnit.Framework;
 
@@ -8,22 +7,12 @@ namespace UnitTests
     public class WhenGameInits
     {
         [Test]
-        public void ToDoColumnHasNoCards()
+        public void BacklogColumnHasNoCards()
         {
             var game = new Game();
-            var todoCards = game.Columns.ToDo.Cards;
+            var backlogCards = game.Columns.Backlog.Cards;
 
-            Assert.AreEqual(0, todoCards.Count);
-        }
-
-        [Test]
-        public void AllColumnsHasNoCards()
-        {
-        	var game = new Game();
-            var allCards = game.Columns.SelectMany(_ => _.Cards);
-
-            Assert.AreEqual(0, allCards.Count());
-
+            Assert.AreEqual(0, backlogCards.Count);
         }
     }
 }

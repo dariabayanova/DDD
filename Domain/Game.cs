@@ -8,7 +8,7 @@ namespace Domain
         {
             var card = new Card();
 
-            Columns.ToDo.Cards.Add(card);
+            Columns.Backlog.Cards.Add(card);
         }
     }
 }
