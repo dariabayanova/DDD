@@ -2,8 +2,9 @@ namespace Domain
 {
     public enum ColumnType
     {
-        ToDo,
+        Backlog,
         InProgress,
+        Testing,
         Done
     }
 }
