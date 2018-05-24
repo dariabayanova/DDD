@@ -58,6 +58,7 @@
     <Compile Include="WhenFlipCoin.cs" />
     <Compile Include="WhenGameInits.cs" />
     <Compile Include="WhenGameStarts.cs" />
+    <Compile Include="WhenPlayerPlays.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj">
