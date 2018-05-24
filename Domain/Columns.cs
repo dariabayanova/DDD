@@ -20,6 +20,11 @@ namespace Domain
             get { return this.First(_ => _.Type == ColumnType.Testing); }
         }
 
+        public Column Done
+        {
+            get { return this.First(_ => _.Type == ColumnType.Done); }
+        }
+
         public Columns()
         {
             Add(new Column(ColumnType.Backlog));
