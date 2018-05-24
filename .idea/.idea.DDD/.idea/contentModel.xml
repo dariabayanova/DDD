@@ -7,6 +7,7 @@
         <e p="BacklogColumn.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Card.cs" t="Include" />
+        <e p="Coin.cs" t="Include" />
         <e p="Column.cs" t="Include" />
         <e p="Columns.cs" t="Include" />
         <e p="ColumnType.cs" t="Include" />
@@ -19,6 +20,7 @@
         <e p="Properties" t="Include">
           <e p="AssemblyInfo.cs" t="Include" />
         </e>
+        <e p="SideOfCoin.cs" t="Include" />
         <e p="TestingColumn.cs" t="Include" />
       </e>
       <e p="packages" t="ExcludeRecursive" />
@@ -30,6 +32,7 @@
           <e p="AssemblyInfo.cs" t="Include" />
         </e>
         <e p="UnitTests.csproj" t="IncludeRecursive" />
+        <e p="WhenFlipCoin.cs" t="Include" />
         <e p="WhenGameInits.cs" t="Include" />
         <e p="WhenGameStarts.cs" t="Include" />
       </e>
