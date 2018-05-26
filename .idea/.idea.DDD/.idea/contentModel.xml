@@ -25,6 +25,7 @@
       </e>
       <e p="packages" t="ExcludeRecursive" />
       <e p="UnitTests" t="IncludeRecursive">
+        <e p="BaseTest.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="DSL" t="Include">
           <e p="CoinBuilder.cs" t="Include" />

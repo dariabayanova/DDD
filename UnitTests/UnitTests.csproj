@@ -54,6 +54,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseTest.cs" />
     <Compile Include="DSL\CoinBuilder.cs" />
     <Compile Include="DSL\Create.cs" />
     <Compile Include="DSL\PlayerBuilder.cs" />

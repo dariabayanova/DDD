@@ -8,10 +8,8 @@ using UnitTests.DSL;
 namespace UnitTests
 {
     [TestFixture]
-    public class WhenPlayerFlipsCoinWithTails
+    public class WhenPlayerFlipsCoinWithTails : BaseTest
     {
-        private readonly Create Create = new Create();
-
         [Test]
         public void NewCardAssignedToPlayer()
         {
