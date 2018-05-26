@@ -11,5 +11,10 @@
         {
             return new PlayerBuilder();
         }
+
+        public GameBuilder Game()
+        {
+            return new GameBuilder();
+        }
     }
 }

@@ -57,11 +57,13 @@
     <Compile Include="BaseTest.cs" />
     <Compile Include="DSL\CoinBuilder.cs" />
     <Compile Include="DSL\Create.cs" />
+    <Compile Include="DSL\GameBuilder.cs" />
     <Compile Include="DSL\PlayerBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WhenFlipCoin.cs" />
     <Compile Include="WhenGameInits.cs" />
     <Compile Include="WhenGameStarts.cs" />
+    <Compile Include="WhenPlayerFlipsCoinWithHeads.cs" />
     <Compile Include="WhenPlayerFlipsCoinWithTails.cs" />
   </ItemGroup>
   <ItemGroup>

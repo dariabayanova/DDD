@@ -30,6 +30,7 @@
         <e p="DSL" t="Include">
           <e p="CoinBuilder.cs" t="Include" />
           <e p="Create.cs" t="Include" />
+          <e p="GameBuilder.cs" t="Include" />
           <e p="PlayerBuilder.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive" />
@@ -41,6 +42,7 @@
         <e p="WhenFlipCoin.cs" t="Include" />
         <e p="WhenGameInits.cs" t="Include" />
         <e p="WhenGameStarts.cs" t="Include" />
+        <e p="WhenPlayerFlipsCoinWithHeads.cs" t="Include" />
         <e p="WhenPlayerFlipsCoinWithTails.cs" t="Include" />
       </e>
     </e>
