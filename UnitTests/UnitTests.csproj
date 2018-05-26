@@ -54,6 +54,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DSL\CoinBuilder.cs" />
+    <Compile Include="DSL\Create.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WhenFlipCoin.cs" />
     <Compile Include="WhenGameInits.cs" />
