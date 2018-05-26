@@ -13,6 +13,7 @@ namespace UnitTests
         {
             var coinMock = new Mock<Coin>();
             coinMock.Setup(_ => _.GetRandomizer()).Returns(RandomMock().Object);
+            coinMock.Setup(_ => _.Flip()).CallBase();
 
             coinMock.Object.Flip();
 
