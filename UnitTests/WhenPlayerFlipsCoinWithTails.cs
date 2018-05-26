@@ -15,9 +15,7 @@ namespace UnitTests
         [Test]
         public void NewCardAssignedToPlayer()
         {
-            var playerMock = new Mock<Player>();
-            var coinMock = Create.Coin().WithTails().Please();
-            playerMock.Setup(_ => _.GetCoin()).Returns(coinMock.Object);
+            var playerMock = Create.Player().WithTailsCoin().Please();
             var game = new Game();
             game.Start(new List<Player>{playerMock.Object});
 

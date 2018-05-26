@@ -6,5 +6,10 @@
         {
             return new CoinBuilder();
         }
+
+        public PlayerBuilder Player()
+        {
+            return new PlayerBuilder();
+        }
     }
 }

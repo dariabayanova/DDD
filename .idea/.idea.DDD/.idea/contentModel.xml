@@ -29,6 +29,7 @@
         <e p="DSL" t="Include">
           <e p="CoinBuilder.cs" t="Include" />
           <e p="Create.cs" t="Include" />
+          <e p="PlayerBuilder.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive" />
         <e p="packages.config" t="Include" />
@@ -40,7 +41,6 @@
         <e p="WhenGameInits.cs" t="Include" />
         <e p="WhenGameStarts.cs" t="Include" />
         <e p="WhenPlayerFlipsCoinWithTails.cs" t="Include" />
-        <e p="WhenPlayerPlays.cs" t="Include" />
       </e>
     </e>
     <e p="C:\Users\Dasha Bayanova\.Rider2017.3\system\resharper-host\local\Transient\ReSharperHost\v11\SolutionCaches\_DDD.1897806110.00" t="ExcludeRecursive" />
