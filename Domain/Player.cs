@@ -32,7 +32,11 @@ namespace Domain
 
         private void BlockCardInProgress()
         {
-            var cardInProgress = CurrentGame.Columns.InProgress.Cards.First(_ => _.Player == this && !_.IsBlocked);
+            var cardInProgress = CurrentGame
+                .FindCards(_ => _.Column.Type == ColumnType.InProgress &&
+                                _.Player == this &&
+                                !_.IsBlocked)
+                .First();
             cardInProgress.IsBlocked = true;
         }
 

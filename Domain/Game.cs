@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -39,7 +40,7 @@ namespace Domain
             for (var i = 0; i < cardsCount; i++)
             {
                 var card = new Card();
-                Columns.Backlog.Cards.Add(card);
+                Columns.Backlog.AddCard(card);
             }
         }
 
@@ -50,8 +51,20 @@ namespace Domain
 
         public void MoveToInProgress(Card card)
         {
-            Columns.Backlog.Cards.Remove(card);
-            Columns.InProgress.Cards.Add(card);
+            Columns.Backlog.RemoveCard(card);
+            Columns.InProgress.AddCard(card);
+        }
+
+        public List<Card> FindCards(Func<Card, bool> func)
+        {
+            var result = new List<Card>();
+
+            result.AddRange(Columns.Backlog.Cards.Where(func));
+            result.AddRange(Columns.InProgress.Cards.Where(func));
+            result.AddRange(Columns.Testing.Cards.Where(func));
+            result.AddRange(Columns.Done.Cards.Where(func));
+
+            return result;
         }
     }
 }

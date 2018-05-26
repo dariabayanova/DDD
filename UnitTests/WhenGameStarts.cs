@@ -28,7 +28,7 @@ namespace UnitTests
 
             Assert.That(game.Players.Count, Is.EqualTo(3));
         }
-
+        
         private static List<Player> Create3Players()
         {
             return new List<Player>{new Player(), new Player(), new Player()};

@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using Domain;
+using NUnit.Framework;
 
 namespace UnitTests
 {
@@ -19,10 +20,10 @@ namespace UnitTests
 
             game.NextRound();
 
-            var firstCardInProgress = game.Columns.InProgress.Cards[0];
-            var secondCardInProgress = game.Columns.InProgress.Cards[1];
-            Assert.True(firstCardInProgress.IsBlocked);
-            Assert.That(secondCardInProgress.Player, Is.EqualTo(playerMock.Object));
+            var cardsInProgress = game.FindCards(_ => _.Column.Type == ColumnType.InProgress);
+
+            Assert.True(cardsInProgress[0].IsBlocked);
+            Assert.That(cardsInProgress[1].Player, Is.EqualTo(playerMock.Object));
         }
     }
 }

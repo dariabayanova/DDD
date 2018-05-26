@@ -17,7 +17,7 @@ namespace UnitTests
 
             game.NextRound();
 
-            var oneCardInProgress = game.Columns.InProgress.Cards.Single();
+            var oneCardInProgress = game.FindCards(_ => _.Column.Type == ColumnType.InProgress).Single();
             Assert.That(oneCardInProgress.Player, Is.EqualTo(playerMock.Object));
         }
     }
