@@ -1,36 +1,10 @@
-using System.Collections.Generic;
-using System.Linq;
-
 namespace Domain
 {
-    public class Columns : List<Column>
+    public class Columns
     {
-        public Column Backlog
-        {
-            get { return this.First(_ => _.Type == ColumnType.Backlog); }
-        }
-
-        public Column InProgress
-        {
-            get { return this.First(_ => _.Type == ColumnType.InProgress); }
-        }
-
-        public Column Testing
-        {
-            get { return this.First(_ => _.Type == ColumnType.Testing); }
-        }
-
-        public Column Done
-        {
-            get { return this.First(_ => _.Type == ColumnType.Done); }
-        }
-
-        public Columns()
-        {
-            Add(new BacklogColumn());
-            Add(new InProgressColumn());
-            Add(new TestingColumn());
-            Add(new DoneColumn());
-        }
+        public Column Backlog { get; } = new BacklogColumn();
+        public Column InProgress { get; } = new InProgressColumn();
+        public Column Testing { get; } = new TestingColumn();
+        public Column Done { get; } = new DoneColumn();
     }
 }
