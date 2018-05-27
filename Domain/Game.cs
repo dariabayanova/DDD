@@ -49,10 +49,15 @@ namespace Domain
             return Columns.Backlog.Cards.First();
         }
 
-        public void MoveToInProgress(Card card)
+        public void MoveToInProgress(Card card, Player player)
         {
-            Columns.Backlog.RemoveCard(card);
-            Columns.InProgress.AddCard(card);
+            var cardsInProgress = FindCards(_ => _.Column.Type == ColumnType.InProgress);
+            if (!Columns.InProgress.HasWIP || cardsInProgress.Count < Columns.InProgress.WIP)
+            {
+                Columns.Backlog.RemoveCard(card);
+                card.Player = player;
+                Columns.InProgress.AddCard(card);
+            }
         }
 
         public List<Card> FindCards(Func<Card, bool> func)

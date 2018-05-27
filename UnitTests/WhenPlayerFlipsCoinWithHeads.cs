@@ -15,7 +15,7 @@ namespace UnitTests
                 .Please();
             var game = Create
                 .Game()
-                .PlayerWithCardsInProgress(playerMock)
+                .PlayerWithCardsInProgress(playerMock, 1)
                 .Please();
 
             game.NextRound();

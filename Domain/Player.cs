@@ -43,8 +43,7 @@ namespace Domain
         private void GetNewCardFromBacklog()
         {
             var card = CurrentGame.GetCardFromBackLog();
-            card.Player = this;
-            CurrentGame.MoveToInProgress(card);
+            CurrentGame.MoveToInProgress(card, this);
         }
 
         public void JoinGame(Game game)
