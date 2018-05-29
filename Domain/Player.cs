@@ -5,8 +5,10 @@ namespace Domain
     public class Player
     {
         private Game CurrentGame { get; set; }
+        // TODO: Раз уж у Player есть явная зависимость от Coin, может сделаем ее явной (через конструктор)?
         public virtual Coin GetCoin() => new Coin();
 
+        // Очень понятный код, выражающий поведение домена. Молодцы!
         public void Play()
         {
             var sideOfCoin = FlipCoin();

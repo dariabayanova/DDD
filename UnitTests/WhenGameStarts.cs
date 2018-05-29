@@ -9,6 +9,7 @@ namespace UnitTests
     public class WhenGameStarts
     {
         [Test]
+        // TODO: Сомнительный тест. Зачем вы с него начали?
         public void GameGenerates10Cards()
         {
             var gameMock = new Mock<Game>();

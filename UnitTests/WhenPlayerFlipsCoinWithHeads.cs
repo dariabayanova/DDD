@@ -9,6 +9,7 @@ namespace UnitTests
         [Test]
         public void CardBlockedAndNewCardAssignedToPlayer()
         {
+            // TODO: Плохо, что Please() создает Mock<Player>, а не Player. 
             var playerMock = Create
                 .Player()
                 .WithHeadsCoin()
@@ -23,7 +24,9 @@ namespace UnitTests
             var cardsInProgress = game.FindCards(_ => _.Column.Type == ColumnType.InProgress);
 
             Assert.True(cardsInProgress[0].IsBlocked);
+            // TODO: Тогда вам тут .Object бы не потребовался. 
             Assert.That(cardsInProgress[1].Player, Is.EqualTo(playerMock.Object));
+            // TODO: Может еще стоит проверить, что новая карточка не заблокирована? А может подумать над удобным Assert DSL? 
         }
     }
 }

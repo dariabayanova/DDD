@@ -4,6 +4,7 @@ using NUnit.Framework;
 namespace UnitTests
 {
     [TestFixture]
+    // TODO: Аббревиатуры тоже пишутся в PascalCase: WhenInProgressColumnHasWip 
     public class WhenInProgressColumnHasWIP : BaseTest
     {
         [Test]
@@ -21,7 +22,9 @@ namespace UnitTests
 
             game.NextRound();
 
+            // TODO: Ой, а зачем так сложно? У вас же Columns публичный, можно просто var cardsInProgress = game.Columns.InProgress;
             var cardsInProgress = game.FindCards(_ => _.Column.Type == ColumnType.InProgress);
+            // TODO: Плохой ассерт. То, что их 2, еще не значит, что, например, они обе назначены на правильного игрока. Лучше сравнивать коллекции при помощи CollectionAssert
             Assert.That(cardsInProgress.Count, Is.EqualTo(2));
         }
 
