@@ -11,7 +11,10 @@ namespace UnitTests
         [Test]
         public void NewCardAssignedToPlayer()
         {
-            var player = Create.Player().WithTailsCoin().Please();
+            var player = Create
+                .Player()
+                .WithTailsCoin()
+                .Please();
             var game = new Game();
             game.Start(new List<Player>{player});
 
@@ -19,6 +22,25 @@ namespace UnitTests
 
             var oneCardInProgress = game.Columns.InProgress.Cards.Single();
             Assert.That(oneCardInProgress.Player, Is.EqualTo(player));
+        }
+
+        [Test]
+        public void BlockedCardWasUnblocked()
+        {
+            var player = Create
+                .Player()
+                .WithTailsCoin()
+                .Please();
+            var game = Create
+                .Game()
+                .PlayerWithCardsInProgress(player, 1)
+                .BlockCardInProgress()
+                .Please();
+
+            game.NextRound("unblockCard");
+
+            var unblockedCard = game.Columns.InProgress.Cards.First(_ => !_.IsBlocked && _.Player == player);
+            Assert.False(unblockedCard.IsBlocked);
         }
     }
 }

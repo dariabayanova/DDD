@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Domain;
 using Moq;
 
@@ -12,7 +13,7 @@ namespace UnitTests.DSL
         public GameBuilder PlayerWithCardsInProgress(Player player, int cardsCount)
         {
             this.player = player;
-            game.Start(new List<Player>{player});
+            game.Start(new List<Player> {player});
 
             CreateCardsInProgress(player, cardsCount);
 
@@ -37,6 +38,13 @@ namespace UnitTests.DSL
                 var card = game.GetCardFromBackLog();
                 game.MoveToInProgress(card, player);
             }
+        }
+
+        public GameBuilder BlockCardInProgress()
+        {
+            var cardInProgress = game.Columns.InProgress.Cards.First(_ => !_.IsBlocked && _.Player == player);
+            cardInProgress.IsBlocked = true;
+            return this;
         }
     }
 }
