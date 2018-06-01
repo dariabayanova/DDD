@@ -27,11 +27,11 @@ namespace Domain
             }
         }
 
-        public void NextRound(string action = "newCard")
+        public void NextRound()
         {
             foreach (var player in Players)
             {
-                player.Play(action);
+                player.Play();
             }
         }
 

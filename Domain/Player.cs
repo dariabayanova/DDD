@@ -14,23 +14,27 @@ namespace Domain
         public Game CurrentGame { get; set; }
 
         // Очень понятный код, выражающий поведение домена. Молодцы!
-        public void Play(string action)
+        public void Play()
         {
             var sideOfCoin = FlipCoin();
 
             if (sideOfCoin == SideOfCoin.Tails)
             {
-                switch (action)
+                var inProgressCards = CurrentGame.Columns.InProgress.Cards;
+                var inProgressHasCards = inProgressCards.Any(_ => _.Player == this);
+                var inProgressHasBlockedCards = inProgressCards.Any(_ => _.IsBlocked && _.Player == this);
+
+                if (!inProgressHasCards)
                 {
-                    case "newCard":
-                        GetNewCardFromBacklog();
-                        break;
-                    case "unblockCard":
-                        UnblockCardInProgress();
-                        break;
-                    case "moveToTesting":
-                        MoveCardFromInProgressToTesting();
-                        break;
+                    GetNewCardFromBacklog();
+                }
+                else if (inProgressHasBlockedCards)
+                {
+                    UnblockCardInProgress();
+                }
+                else
+                {
+                    MoveCardFromInProgressToTesting();
                 }
             }
 

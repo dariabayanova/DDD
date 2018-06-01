@@ -37,7 +37,7 @@ namespace UnitTests
                 .BlockCardInProgress()
                 .Please();
 
-            game.NextRound("unblockCard");
+            game.NextRound();
 
             var unblockedCard = game.Columns.InProgress.Cards.First(_ => !_.IsBlocked && _.Player == player);
             Assert.False(unblockedCard.IsBlocked);
@@ -55,7 +55,7 @@ namespace UnitTests
                 .PlayerWithCardsInProgress(player, 1)
                 .Please();
 
-            game.NextRound("moveToTesting");
+            game.NextRound();
 
             var cardsInTesting = game.Columns.Testing.Cards.First(_ => _.Player == player);
             Assert.That(cardsInTesting.Player, Is.EqualTo(player));
