@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\repo\DDD" t="IncludeFlat">
+    <e p="C:\Projects\dbayanova\DDD" t="IncludeFlat">
       <e p="DDD.sln" t="IncludeFlat" />
       <e p="Domain" t="IncludeRecursive">
         <e p="BacklogColumn.cs" t="Include" />
@@ -45,8 +45,9 @@
         <e p="WhenInProgressColumnHasWIP.cs" t="Include" />
         <e p="WhenPlayerFlipsCoinWithHeads.cs" t="Include" />
         <e p="WhenPlayerFlipsCoinWithTails.cs" t="Include" />
+        <e p="WhenTestingColumnHasWip.cs" t="Include" />
       </e>
     </e>
-    <e p="C:\Users\Dodo\.Rider2018.1\system\resharper-host\local\Transient\ReSharperHost\v12\SolutionCaches\_DDD.1443758299.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Dasha Bayanova\.Rider2017.3\system\resharper-host\local\Transient\ReSharperHost\v11\SolutionCaches\_DDD.1897806110.00" t="ExcludeRecursive" />
   </component>
 </project>

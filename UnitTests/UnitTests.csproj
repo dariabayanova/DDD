@@ -66,6 +66,7 @@
     <Compile Include="WhenInProgressColumnHasWip.cs" />
     <Compile Include="WhenPlayerFlipsCoinWithHeads.cs" />
     <Compile Include="WhenPlayerFlipsCoinWithTails.cs" />
+    <Compile Include="WhenTestingColumnHasWip.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj">

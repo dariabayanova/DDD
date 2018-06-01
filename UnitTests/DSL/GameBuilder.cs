@@ -26,6 +26,12 @@ namespace UnitTests.DSL
             return this;
         }
 
+        public GameBuilder WithWipInTesting(int wip)
+        {
+            game.Columns.Testing.WIP = wip;
+            return this;
+        }
+
         public Game Please()
         {
             return game;
