@@ -20,12 +20,12 @@ namespace UnitTests.DSL
             return this;
         }
 
-        public Mock<Player> Please()
+        public Player Please()
         {
             var playerMock = new Mock<Player>();
             playerMock.Setup(_ => _.GetCoin()).Returns(coinMock.Object);
 
-            return playerMock;
+            return playerMock.Object;
         }
     }
 }

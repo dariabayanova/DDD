@@ -9,14 +9,13 @@ namespace UnitTests
         [Test]
         public void CardBlockedAndNewCardAssignedToPlayer()
         {
-            // TODO: Плохо, что Please() создает Mock<Player>, а не Player. 
-            var playerMock = Create
+            var player = Create
                 .Player()
                 .WithHeadsCoin()
                 .Please();
             var game = Create
                 .Game()
-                .PlayerWithCardsInProgress(playerMock, 1)
+                .PlayerWithCardsInProgress(player, 1)
                 .Please();
 
             game.NextRound();
@@ -24,8 +23,7 @@ namespace UnitTests
             var cardsInProgress = game.FindCards(_ => _.Column.Type == ColumnType.InProgress);
 
             Assert.True(cardsInProgress[0].IsBlocked);
-            // TODO: Тогда вам тут .Object бы не потребовался. 
-            Assert.That(cardsInProgress[1].Player, Is.EqualTo(playerMock.Object));
+            Assert.That(cardsInProgress[1].Player, Is.EqualTo(player));
             // TODO: Может еще стоит проверить, что новая карточка не заблокирована? А может подумать над удобным Assert DSL? 
         }
     }

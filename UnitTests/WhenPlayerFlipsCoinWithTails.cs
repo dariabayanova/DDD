@@ -11,14 +11,14 @@ namespace UnitTests
         [Test]
         public void NewCardAssignedToPlayer()
         {
-            var playerMock = Create.Player().WithTailsCoin().Please();
+            var player = Create.Player().WithTailsCoin().Please();
             var game = new Game();
-            game.Start(new List<Player>{playerMock.Object});
+            game.Start(new List<Player>{player});
 
             game.NextRound();
 
             var oneCardInProgress = game.FindCards(_ => _.Column.Type == ColumnType.InProgress).Single();
-            Assert.That(oneCardInProgress.Player, Is.EqualTo(playerMock.Object));
+            Assert.That(oneCardInProgress.Player, Is.EqualTo(player));
         }
     }
 }

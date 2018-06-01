@@ -6,15 +6,15 @@ namespace UnitTests.DSL
 {
     public class GameBuilder
     {
-        private IMock<Player> playerMock;
+        private Player player;
         private readonly Game game = new Game();
 
-        public GameBuilder PlayerWithCardsInProgress(IMock<Player> playerMock, int cardsCount)
+        public GameBuilder PlayerWithCardsInProgress(Player player, int cardsCount)
         {
-            this.playerMock = playerMock;
-            game.Start(new List<Player>{playerMock.Object});
+            this.player = player;
+            game.Start(new List<Player>{player});
 
-            CreateCardsInProgress(playerMock, cardsCount);
+            CreateCardsInProgress(player, cardsCount);
 
             return this;
         }
@@ -30,12 +30,12 @@ namespace UnitTests.DSL
             return game;
         }
 
-        private void CreateCardsInProgress(IMock<Player> playerMock, int cardsCount)
+        private void CreateCardsInProgress(Player player, int cardsCount)
         {
             for (var i = 0; i < cardsCount; i++)
             {
                 var card = game.GetCardFromBackLog();
-                game.MoveToInProgress(card, playerMock.Object);
+                game.MoveToInProgress(card, player);
             }
         }
     }
