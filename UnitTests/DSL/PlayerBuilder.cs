@@ -23,7 +23,7 @@ namespace UnitTests.DSL
         public Player Please()
         {
             var playerMock = new Mock<Player>();
-            playerMock.Setup(_ => _.GetCoin()).Returns(coinMock.Object);
+            playerMock.Setup(_ => _.coin).Returns(coinMock.Object);
 
             return playerMock.Object;
         }

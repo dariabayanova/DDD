@@ -10,6 +10,7 @@ namespace UnitTests
     {
         [Test]
         // TODO: Сомнительный тест. Зачем вы с него начали?
+        // TODO: Хотели сделать Factory для колонки беклога
         public void GameGenerates10Cards()
         {
             var gameMock = new Mock<Game>();
