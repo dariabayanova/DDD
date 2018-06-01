@@ -44,7 +44,7 @@ namespace UnitTests
         }
 
         [Test]
-        public void CardInProgressMoveToTesting()
+        public void CardInProgressWasMovedToTesting()
         {
             var player = Create
                 .Player()
