@@ -49,6 +49,7 @@ namespace Domain
             return Columns.Backlog.Cards.First();
         }
 
+
         public void MoveToInProgress(Card card, Player player)
         {
             var cardsInProgress = Columns.InProgress.Cards;
@@ -58,6 +59,20 @@ namespace Domain
                 Columns.Backlog.RemoveCard(card);
                 card.Player = player;
                 Columns.InProgress.AddCard(card);
+            }
+        }
+
+        public Card GetCardFromInProgress(Player player)
+        {
+            return Columns.InProgress.Cards.First(_ => _.Player == player);
+        }
+
+        public void MoveCardFromInProgressToTesting(Card card, Player player)
+        {
+            if (!card.IsBlocked)
+            {
+                Columns.InProgress.RemoveCard(card);
+                Columns.Testing.AddCard(card);
             }
         }
 

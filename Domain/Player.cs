@@ -28,6 +28,9 @@ namespace Domain
                     case "unblockCard":
                         UnblockCardInProgress();
                         break;
+                    case "moveToTesting":
+                        MoveCardFromInProgressToTesting();
+                        break;
                 }
             }
 
@@ -54,8 +57,15 @@ namespace Domain
 
         private void UnblockCardInProgress()
         {
-            var blockedCardInProgress = CurrentGame.Columns.InProgress.Cards.First(_ => _.IsBlocked && _.Player == this);
+            var blockedCardInProgress =
+                CurrentGame.Columns.InProgress.Cards.First(_ => _.IsBlocked && _.Player == this);
             blockedCardInProgress.IsBlocked = false;
+        }
+
+        private void MoveCardFromInProgressToTesting()
+        {
+            var card = CurrentGame.GetCardFromInProgress(this);
+            CurrentGame.MoveCardFromInProgressToTesting(card, this);
         }
 
         private void GetNewCardFromBacklog()

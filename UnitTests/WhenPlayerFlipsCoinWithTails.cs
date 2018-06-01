@@ -16,7 +16,7 @@ namespace UnitTests
                 .WithTailsCoin()
                 .Please();
             var game = new Game();
-            game.Start(new List<Player>{player});
+            game.Start(new List<Player> {player});
 
             game.NextRound();
 
@@ -41,6 +41,24 @@ namespace UnitTests
 
             var unblockedCard = game.Columns.InProgress.Cards.First(_ => !_.IsBlocked && _.Player == player);
             Assert.False(unblockedCard.IsBlocked);
+        }
+
+        [Test]
+        public void CardInProgressMoveToTesting()
+        {
+            var player = Create
+                .Player()
+                .WithTailsCoin()
+                .Please();
+            var game = Create
+                .Game()
+                .PlayerWithCardsInProgress(player, 1)
+                .Please();
+
+            game.NextRound("moveToTesting");
+
+            var cardsInTesting = game.Columns.Testing.Cards.First(_ => _.Player == player);
+            Assert.That(cardsInTesting.Player, Is.EqualTo(player));
         }
     }
 }
