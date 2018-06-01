@@ -20,11 +20,12 @@ namespace UnitTests
 
             game.NextRound();
 
-            var cardsInProgress = game.FindCards(_ => _.Column.Type == ColumnType.InProgress);
+            var cardsInProgress = game.Columns.InProgress.Cards;
 
             Assert.True(cardsInProgress[0].IsBlocked);
             Assert.That(cardsInProgress[1].Player, Is.EqualTo(player));
-            // TODO: Может еще стоит проверить, что новая карточка не заблокирована? А может подумать над удобным Assert DSL? 
+            Assert.False(cardsInProgress[1].IsBlocked);
+            // TODO: А может подумать над удобным Assert DSL?
         }
     }
 }

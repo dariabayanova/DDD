@@ -22,14 +22,14 @@ namespace UnitTests
 
             game.NextRound();
 
-            var playerCards = player.Object.CurrentGame.FindCards(_ => _.Column.Type == ColumnType.InProgress);
+            var playerCards = player.CurrentGame.FindCards(_ => _.Column.Type == ColumnType.InProgress);
             var cardsWithPlayer =
-                game.FindCards(_ => _.Column.Type == ColumnType.InProgress && _.Player == player.Object);
+                game.FindCards(_ => _.Column.Type == ColumnType.InProgress && _.Player == player);
             CollectionAssert.AreEqual(playerCards, cardsWithPlayer);
         }
 
         [Test]
-        public void PlayerCannotGetCardsMoreThanWIP()
+        public void PlayerCannotGetCardsMoreThanWip()
         {
             var player = Create
                 .Player()
@@ -43,9 +43,9 @@ namespace UnitTests
 
             game.NextRound();
 
-            var playerCards = player.Object.CurrentGame.FindCards(_ => _.Column.Type == ColumnType.InProgress);
+            var playerCards = player.CurrentGame.FindCards(_ => _.Column.Type == ColumnType.InProgress);
             var cardsWithPlayer =
-                game.FindCards(_ => _.Column.Type == ColumnType.InProgress && _.Player == player.Object);
+                game.FindCards(_ => _.Column.Type == ColumnType.InProgress && _.Player == player);
             CollectionAssert.AreEqual(playerCards, cardsWithPlayer);
         }
     }
