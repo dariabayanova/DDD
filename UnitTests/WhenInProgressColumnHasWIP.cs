@@ -43,8 +43,10 @@ namespace UnitTests
 
             game.NextRound();
 
-            var cardsInProgress = game.FindCards(_ => _.Column.Type == ColumnType.InProgress);
-            Assert.That(cardsInProgress.Count, Is.EqualTo(2));
+            var playerCards = player.Object.CurrentGame.FindCards(_ => _.Column.Type == ColumnType.InProgress);
+            var cardsWithPlayer =
+                game.FindCards(_ => _.Column.Type == ColumnType.InProgress && _.Player == player.Object);
+            CollectionAssert.AreEqual(playerCards, cardsWithPlayer);
         }
     }
 }
