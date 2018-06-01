@@ -19,7 +19,7 @@ namespace UnitTests.DSL
             return this;
         }
 
-        public GameBuilder WithWIPInProgress(int wip)
+        public GameBuilder WithWipInProgress(int wip)
         {
             game.Columns.InProgress.WIP = wip;
             return this;

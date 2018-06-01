@@ -63,7 +63,7 @@
     <Compile Include="WhenFlipCoin.cs" />
     <Compile Include="WhenGameInits.cs" />
     <Compile Include="WhenGameStarts.cs" />
-    <Compile Include="WhenInProgressColumnHasWIP.cs" />
+    <Compile Include="WhenInProgressColumnHasWip.cs" />
     <Compile Include="WhenPlayerFlipsCoinWithHeads.cs" />
     <Compile Include="WhenPlayerFlipsCoinWithTails.cs" />
   </ItemGroup>

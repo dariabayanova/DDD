@@ -51,7 +51,8 @@ namespace Domain
 
         public void MoveToInProgress(Card card, Player player)
         {
-            var cardsInProgress = FindCards(_ => _.Column.Type == ColumnType.InProgress);
+            var cardsInProgress = Columns.InProgress.Cards;
+
             if (!Columns.InProgress.HasWIP || cardsInProgress.Count < Columns.InProgress.WIP)
             {
                 Columns.Backlog.RemoveCard(card);
