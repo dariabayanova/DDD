@@ -20,7 +20,7 @@ namespace UnitTests.StatisticTests
 		        .Times(1)
 		        .Please();
 
-	        statistics.Collect();
+	        statistics.CalculateThroughputRate();
 
 	        gameMock.Verify(_ => _.NextRound(), Times.Exactly(15));
         }
@@ -38,7 +38,7 @@ namespace UnitTests.StatisticTests
 			    .Times(1000)
 			    .Please();
 
-		    statistics.Collect();
+		    statistics.CalculateThroughputRate();
 
 		    gameMock.Verify(_ => _.NextRound(), Times.Exactly(15 * 1000));
 	    }
@@ -55,7 +55,7 @@ namespace UnitTests.StatisticTests
 			    .Times(1)
 			    .Please();
 
-		    var throughputRate = statistic.Collect();
+		    var throughputRate = statistic.CalculateThroughputRate();
 		    var doneCards = game.Columns.Done.Cards;
 		    Assert.That(throughputRate, Is.EqualTo(doneCards.Count));
 	    }
@@ -72,7 +72,7 @@ namespace UnitTests.StatisticTests
 			    .Times(3)
 			    .Please();
 
-		    var throughputRate = statistic.Collect();
+		    var throughputRate = statistic.CalculateThroughputRate();
 		    var doneCards = game.Columns.Done.Cards;
 		    Assert.That(throughputRate, Is.EqualTo(doneCards.Count));
 	    }

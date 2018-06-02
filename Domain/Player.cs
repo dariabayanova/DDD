@@ -65,14 +65,17 @@ namespace Domain
 
         private void BlockCardInProgress()
         {
-            var cardInProgress = CurrentGame.Columns.InProgress.Cards.First(_ => !_.IsBlocked && _.Player == this);
-            cardInProgress.IsBlocked = true;
+            var cardInProgress = CurrentGame.Columns.InProgress.Cards.FirstOrDefault(_ => !_.IsBlocked && _.Player == this);
+            if (cardInProgress != null)
+            {
+                cardInProgress.IsBlocked = true;
+            }
         }
 
         private void UnblockCardInProgress()
         {
             var blockedCardInProgress =
-                CurrentGame.Columns.InProgress.Cards.First(_ => _.IsBlocked && _.Player == this);
+                CurrentGame.Columns.InProgress.Cards.FirstOrDefault(_ => _.IsBlocked && _.Player == this);
             blockedCardInProgress.IsBlocked = false;
         }
 

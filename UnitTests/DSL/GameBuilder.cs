@@ -7,11 +7,6 @@ namespace UnitTests.DSL
     {
         private readonly Game game = new Game();
 
-        public GameBuilder()
-        {
-            game.Start();
-        }
-
         public GameBuilder PlayerWithCardsInProgress(Player player, int cardsCount)
         {
             game.Join(player);

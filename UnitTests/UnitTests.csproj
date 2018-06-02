@@ -69,6 +69,7 @@
     <Compile Include="GameTests\WhenTestingColumnHasWip.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StatisticTests\WhenCollectStatistic.cs" />
+    <Compile Include="WhenFindBestWipForGame.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj">

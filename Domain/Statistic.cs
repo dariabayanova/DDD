@@ -26,10 +26,12 @@
                 game.Join(new Player());
             }
 
+            game.Start();
+
             return game;
         }
 
-        public double Collect()
+        public double CalculateThroughputRate()
         {
             var totalCardsInDone = 0;
 
