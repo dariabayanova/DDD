@@ -62,18 +62,25 @@ namespace Domain
             }
         }
 
-        public Card GetCardFromInProgress(Player player)
-        {
-            return Columns.InProgress.Cards.First(_ => _.Player == player);
-        }
-
         public void MoveCardFromInProgressToTesting(Card card, Player player)
         {
-            if (!card.IsBlocked)
+            if (card.IsBlocked)
+            {
+                return;
+            }
+
+            var cardsInTesting = Columns.Testing.Cards;
+
+            if (!Columns.Testing.HasWIP || cardsInTesting.Count < Columns.Testing.WIP)
             {
                 Columns.InProgress.RemoveCard(card);
                 Columns.Testing.AddCard(card);
             }
+        }
+
+        public Card GetCardFromInProgress(Player player)
+        {
+            return Columns.InProgress.Cards.First(_ => _.Player == player);
         }
 
         public List<Card> FindCards(Func<Card, bool> func)

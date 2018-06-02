@@ -7,15 +7,22 @@ namespace UnitTests.DSL
 {
     public class GameBuilder
     {
-        private Player player;
         private readonly Game game = new Game();
 
         public GameBuilder PlayerWithCardsInProgress(Player player, int cardsCount)
         {
-            this.player = player;
             game.Start(new List<Player> {player});
 
             CreateCardsInProgress(player, cardsCount);
+
+            return this;
+        }
+
+        public GameBuilder PlayerWithCardsInTesting(Player player, int cardsCount)
+        {
+            game.Start(new List<Player> {player});
+
+            CreateCardsInTesting(player, cardsCount);
 
             return this;
         }
@@ -37,6 +44,17 @@ namespace UnitTests.DSL
             return game;
         }
 
+        private void CreateCardsInTesting(Player player, int cardsCount)
+        {
+            CreateCardsInProgress(player, cardsCount);
+
+            for (var i = 0; i < cardsCount; i++)
+            {
+                var card = game.GetCardFromInProgress(player);
+                game.MoveCardFromInProgressToTesting(card, player);
+            }
+        }
+
         private void CreateCardsInProgress(Player player, int cardsCount)
         {
             for (var i = 0; i < cardsCount; i++)
@@ -48,7 +66,7 @@ namespace UnitTests.DSL
 
         public GameBuilder BlockCardInProgress()
         {
-            var cardInProgress = game.Columns.InProgress.Cards.First(_ => !_.IsBlocked && _.Player == player);
+            var cardInProgress = game.Columns.InProgress.Cards.First(_ => !_.IsBlocked);
             cardInProgress.IsBlocked = true;
             return this;
         }
