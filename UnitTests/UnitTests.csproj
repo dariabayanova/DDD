@@ -59,14 +59,14 @@
     <Compile Include="DSL\Create.cs" />
     <Compile Include="DSL\GameBuilder.cs" />
     <Compile Include="DSL\PlayerBuilder.cs" />
+    <Compile Include="GameTests\WhenFlipCoin.cs" />
+    <Compile Include="GameTests\WhenGameInits.cs" />
+    <Compile Include="GameTests\WhenGameStarts.cs" />
+    <Compile Include="GameTests\WhenInProgressColumnHasWip.cs" />
+    <Compile Include="GameTests\WhenPlayerFlipsCoinWithHeads.cs" />
+    <Compile Include="GameTests\WhenPlayerFlipsCoinWithTails.cs" />
+    <Compile Include="GameTests\WhenTestingColumnHasWip.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WhenFlipCoin.cs" />
-    <Compile Include="WhenGameInits.cs" />
-    <Compile Include="WhenGameStarts.cs" />
-    <Compile Include="WhenInProgressColumnHasWip.cs" />
-    <Compile Include="WhenPlayerFlipsCoinWithHeads.cs" />
-    <Compile Include="WhenPlayerFlipsCoinWithTails.cs" />
-    <Compile Include="WhenTestingColumnHasWip.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj">

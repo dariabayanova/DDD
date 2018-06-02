@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Domain;
 using NUnit.Framework;
 
-namespace UnitTests
+namespace UnitTests.GameTests
 {
     [TestFixture]
     public class WhenPlayerFlipsCoinWithTails : BaseTest
