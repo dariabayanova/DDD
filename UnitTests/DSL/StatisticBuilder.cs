@@ -5,7 +5,7 @@ namespace UnitTests.DSL
 {
     public class StatisticBuilder
     {
-        private Mock<Game> gameMock;
+        private Game game;
         private int wip;
         private int playersCount;
         private int roundsCount;
@@ -28,9 +28,9 @@ namespace UnitTests.DSL
             return this;
         }
 
-        public StatisticBuilder WithGame(Mock<Game> gameMock)
+        public StatisticBuilder WithGame(Game game)
         {
-            this.gameMock = gameMock;
+            this.game = game;
 
             return this;
         }
@@ -39,7 +39,7 @@ namespace UnitTests.DSL
         {
             var statisticMock = new Mock<Statistic>(wip, playersCount, roundsCount);
 
-            statisticMock.Setup(_ => _.CreateGame()).Returns(gameMock.Object);
+            statisticMock.Setup(_ => _.CreateGame()).Returns(game);
 
             return statisticMock;
         }

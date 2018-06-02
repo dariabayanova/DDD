@@ -16,7 +16,7 @@ namespace UnitTests
 		        .WithWIP(1)
 		        .WithPlayers(3)
 		        .WithRounds(15)
-		        .WithGame(gameMock)
+		        .WithGame(gameMock.Object)
 		        .Please();
 
 	        statisticsMock.Object.Collect();
