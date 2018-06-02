@@ -2,7 +2,7 @@
 using Moq;
 using NUnit.Framework;
 
-namespace UnitTests
+namespace UnitTests.StatisticTests
 {
     [TestFixture]
     public class WhenCollectStatistic : BaseTest
