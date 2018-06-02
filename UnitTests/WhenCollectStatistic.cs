@@ -60,6 +60,23 @@ namespace UnitTests
 		    Assert.That(throughputRate, Is.EqualTo(doneCards.Count));
 	    }
 
+	    [Test]
+	    public void ThroughputRateEqualsAverageCardsCountInDoneColumn()
+	    {
+		    var game = CreateGameWithOneCardInTesting();
+
+		    var statistic = Create
+			    .Statistic()
+			    .WithGame(game)
+			    .WithRounds(1)
+			    .Times(3)
+			    .Please();
+
+		    var throughputRate = statistic.Collect();
+		    var doneCards = game.Columns.Done.Cards;
+		    Assert.That(throughputRate, Is.EqualTo(doneCards.Count));
+	    }
+
 	    private Game CreateGameWithOneCardInTesting()
 	    {
 		    var player = Create
