@@ -33,12 +33,17 @@
         {
             for (var i = 0; i < Times; i++)
             {
-                var game = CreateGame();
+                CollectExperiment();
+            }
+        }
 
-                for (var j = 0; j < RoundsCount; j++)
-                {
-                    game.NextRound();
-                }
+        private void CollectExperiment()
+        {
+            var game = CreateGame();
+
+            for (var j = 0; j < RoundsCount; j++)
+            {
+                game.NextRound();
             }
         }
     }
