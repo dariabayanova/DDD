@@ -51,7 +51,7 @@ namespace UnitTests.DSL
             for (var i = 0; i < cardsCount; i++)
             {
                 var card = game.GetCardFromInProgress(player);
-                game.MoveCardFromInProgressToTesting(card, player);
+                game.MoveCardFromInProgressToTesting(card);
             }
         }
 

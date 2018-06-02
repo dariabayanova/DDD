@@ -62,7 +62,7 @@ namespace Domain
             }
         }
 
-        public void MoveCardFromInProgressToTesting(Card card, Player player)
+        public void MoveCardFromInProgressToTesting(Card card)
         {
             if (card.IsBlocked)
             {
@@ -78,9 +78,20 @@ namespace Domain
             }
         }
 
+        public void MoveCardFromTestingToDone(Card card)
+        {
+            Columns.Testing.RemoveCard(card);
+            Columns.Done.AddCard(card);
+        }
+
         public Card GetCardFromInProgress(Player player)
         {
             return Columns.InProgress.Cards.First(_ => _.Player == player);
+        }
+
+        public Card GetCardFromTesting(Player player)
+        {
+            return Columns.Testing.Cards.First(_ => _.Player == player);
         }
 
         public List<Card> FindCards(Func<Card, bool> func)

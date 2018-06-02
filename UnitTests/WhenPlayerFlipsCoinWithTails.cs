@@ -57,8 +57,26 @@ namespace UnitTests
 
             game.NextRound();
 
-            var cardsInTesting = game.Columns.Testing.Cards.First(_ => _.Player == player);
-            Assert.That(cardsInTesting.Player, Is.EqualTo(player));
+            var playerCard = game.FindCards(_ => _.Player == player).Single();
+            Assert.That(playerCard.Column.Type, Is.EqualTo(ColumnType.Testing));
+        }
+
+        [Test]
+        public void CardInTestingWasMovedToDone()
+        {
+            var player = Create
+                .Player()
+                .WithTailsCoin()
+                .Please();
+            var game = Create
+                .Game()
+                .PlayerWithCardsInTesting(player, 1)
+                .Please();
+
+            game.NextRound();
+
+            var playerCard = game.FindCards(_ => _.Player == player).Single();
+            Assert.That(playerCard.Column.Type, Is.EqualTo(ColumnType.Done));
         }
     }
 }

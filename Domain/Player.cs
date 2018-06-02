@@ -20,11 +20,16 @@ namespace Domain
 
             if (sideOfCoin == SideOfCoin.Tails)
             {
+                var testingHasCards = CurrentGame.Columns.Testing.Cards.Any(_ => _.Player == this);
                 var inProgressCards = CurrentGame.Columns.InProgress.Cards;
                 var inProgressHasCards = inProgressCards.Any(_ => _.Player == this);
                 var inProgressHasBlockedCards = inProgressCards.Any(_ => _.IsBlocked && _.Player == this);
 
-                if (!inProgressHasCards)
+                if (testingHasCards)
+                {
+                    MoveCardFromTestingToDone();
+                }
+                else if (!inProgressHasCards)
                 {
                     GetNewCardFromBacklog();
                 }
@@ -44,7 +49,6 @@ namespace Domain
                 GetNewCardFromBacklog();
             }
         }
-
 
         private SideOfCoin FlipCoin()
         {
@@ -69,7 +73,13 @@ namespace Domain
         private void MoveCardFromInProgressToTesting()
         {
             var card = CurrentGame.GetCardFromInProgress(this);
-            CurrentGame.MoveCardFromInProgressToTesting(card, this);
+            CurrentGame.MoveCardFromInProgressToTesting(card);
+        }
+
+        private void MoveCardFromTestingToDone()
+        {
+            var card = CurrentGame.GetCardFromTesting(this);
+            CurrentGame.MoveCardFromTestingToDone(card);
         }
 
         private void GetNewCardFromBacklog()
