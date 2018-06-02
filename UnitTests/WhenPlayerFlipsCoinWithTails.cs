@@ -25,7 +25,7 @@ namespace UnitTests
         }
 
         [Test]
-        public void BlockedCardWasUnblocked()
+        public void BlockedCardInProgressWasUnblocked()
         {
             var player = Create
                 .Player()
