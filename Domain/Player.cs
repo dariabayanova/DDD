@@ -20,18 +20,24 @@ namespace Domain
 
             if (sideOfCoin == SideOfCoin.Tails)
             {
-                var testingHasCards = CurrentGame.Columns.Testing.Cards.Any(_ => _.Player == this);
-                var inProgressCards = CurrentGame.Columns.InProgress.Cards;
-                var inProgressHasCards = inProgressCards.Any(_ => _.Player == this);
-                var inProgressHasBlockedCards = inProgressCards.Any(_ => _.IsBlocked && _.Player == this);
+                var testingCards = CurrentGame.Columns.Testing.Cards.Where(_ => _.Player == this);
+                var testingHasUnblockedCards = testingCards.Any(_ => !_.IsBlocked);
+                var testingHasBlockedCards = testingCards.Any(_ => _.IsBlocked);
+                var inProgressCards = CurrentGame.Columns.InProgress.Cards.Where(_ => _.Player == this);
+                var inProgressHasBlockedCards = inProgressCards.Any(_ => _.IsBlocked);
+                var inProgressHasUnblockedCards = inProgressCards.Any(_ => !_.IsBlocked);
 
-                if (testingHasCards)
+                if (testingHasUnblockedCards)
                 {
                     MoveCardFromTestingToDone();
                 }
-                else if (!inProgressHasCards)
+                else if (testingHasBlockedCards)
                 {
-                    GetNewCardFromBacklog();
+                    UnblockCardInTesting();
+                }
+                else if (inProgressHasUnblockedCards)
+                {
+                    MoveCardFromInProgressToTesting();
                 }
                 else if (inProgressHasBlockedCards)
                 {
@@ -39,7 +45,7 @@ namespace Domain
                 }
                 else
                 {
-                    MoveCardFromInProgressToTesting();
+                    GetNewCardFromBacklog();
                 }
             }
 
@@ -68,6 +74,13 @@ namespace Domain
             var blockedCardInProgress =
                 CurrentGame.Columns.InProgress.Cards.First(_ => _.IsBlocked && _.Player == this);
             blockedCardInProgress.IsBlocked = false;
+        }
+
+        private void UnblockCardInTesting()
+        {
+            var blockedCardInTesting =
+                CurrentGame.Columns.Testing.Cards.First(_ => _.IsBlocked && _.Player == this);
+            blockedCardInTesting.IsBlocked = false;
         }
 
         private void MoveCardFromInProgressToTesting()

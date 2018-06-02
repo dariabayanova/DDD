@@ -44,6 +44,25 @@ namespace UnitTests
         }
 
         [Test]
+        public void BlockedCardInTestingWasUnblocked()
+        {
+            var player = Create
+                .Player()
+                .WithTailsCoin()
+                .Please();
+            var game = Create
+                .Game()
+                .PlayerWithCardsInTesting(player, 1)
+                .BlockCardInTesting()
+                .Please();
+
+            game.NextRound();
+
+            var playerCard = game.FindCards(_ => _.Player == player).Single();
+            Assert.False(playerCard.IsBlocked);
+        }
+
+        [Test]
         public void CardInProgressWasMovedToTesting()
         {
             var player = Create

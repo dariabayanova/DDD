@@ -70,5 +70,12 @@ namespace UnitTests.DSL
             cardInProgress.IsBlocked = true;
             return this;
         }
+
+        public GameBuilder BlockCardInTesting()
+        {
+            var cardInProgress = game.Columns.Testing.Cards.First(_ => !_.IsBlocked);
+            cardInProgress.IsBlocked = true;
+            return this;
+        }
     }
 }
