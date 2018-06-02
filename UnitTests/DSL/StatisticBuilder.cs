@@ -9,6 +9,7 @@ namespace UnitTests.DSL
         private int wip;
         private int playersCount;
         private int roundsCount;
+        private int times;
 
         public StatisticBuilder WithWIP(int wip)
         {
@@ -34,10 +35,17 @@ namespace UnitTests.DSL
 
             return this;
         }
+        
+        public StatisticBuilder Times(int times)
+        {
+            this.times = times;
+
+            return this;
+        }
 
         public Mock<Statistic> Please()
         {
-            var statisticMock = new Mock<Statistic>(wip, playersCount, roundsCount);
+            var statisticMock = new Mock<Statistic>(wip, playersCount, roundsCount, times);
 
             statisticMock.Setup(_ => _.CreateGame()).Returns(game);
 

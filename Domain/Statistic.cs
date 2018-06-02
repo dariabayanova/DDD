@@ -5,12 +5,14 @@
         public int Wip { get; }
         public int PlayersCount { get; }
         public int RoundsCount { get; }
+        public int Times { get; }
 
-        public Statistic(int wip, int playersCount, int roundsCount)
+        public Statistic(int wip, int playersCount, int roundsCount, int times)
         {
             Wip = wip;
             PlayersCount = playersCount;
             RoundsCount = roundsCount;
+            Times = times;
         }
 
         public virtual Game CreateGame()
@@ -29,11 +31,14 @@
 
         public void Collect()
         {
-            var game = CreateGame();
-
-            for (var i = 0; i < RoundsCount; i++)
+            for (var i = 0; i < Times; i++)
             {
-                game.NextRound();
+                var game = CreateGame();
+
+                for (var j = 0; j < RoundsCount; j++)
+                {
+                    game.NextRound();
+                }
             }
         }
     }
