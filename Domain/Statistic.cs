@@ -29,15 +29,21 @@
             return game;
         }
 
-        public void Collect()
+        public double Collect()
         {
+            var totalCardsInDone = 0;
+
             for (var i = 0; i < Times; i++)
             {
-                CollectExperiment();
+                var game = ExecuteGame();
+                var doneCards = game.Columns.Done.Cards;
+                totalCardsInDone += doneCards.Count;
             }
+
+            return (double)totalCardsInDone/Times;
         }
 
-        private void CollectExperiment()
+        private Game ExecuteGame()
         {
             var game = CreateGame();
 
@@ -45,6 +51,8 @@
             {
                 game.NextRound();
             }
+
+            return game;
         }
     }
 }

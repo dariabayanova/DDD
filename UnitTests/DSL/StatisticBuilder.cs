@@ -43,13 +43,13 @@ namespace UnitTests.DSL
             return this;
         }
 
-        public Mock<Statistic> Please()
+        public Statistic Please()
         {
             var statisticMock = new Mock<Statistic>(wip, playersCount, roundsCount, times);
 
             statisticMock.Setup(_ => _.CreateGame()).Returns(game);
 
-            return statisticMock;
+            return statisticMock.Object;
         }
     }
 }
