@@ -16,24 +16,9 @@ namespace UnitTests
             var gameMock = new Mock<Game>();
             gameMock.Setup(_ => _.GenerateCards(10));
 
-            gameMock.Object.Start(Create3Players());
+            gameMock.Object.Start();
 
             gameMock.Verify(_ => _.GenerateCards(10), Times.Once);
-        }
-
-        [Test]
-        public void GameHas3Players()
-        {
-        	var game = new Game();
-
-            game.Start(Create3Players());
-
-            Assert.That(game.Players.Count, Is.EqualTo(3));
-        }
-        
-        private static List<Player> Create3Players()
-        {
-            return new List<Player>{new Player(), new Player(), new Player()};
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Domain;
+﻿using System.Linq;
+using Domain;
 using NUnit.Framework;
 
 namespace UnitTests
@@ -28,23 +29,27 @@ namespace UnitTests
         }
 
         [Test]
-        public void PlayerCannotMoveCardsMoreThanWip()
+        public void FirstPlayerCannotMoveCardsMoreThanWip()
         {
-            var player = Create
+            var firstPlayer = Create
+                .Player()
+                .WithTailsCoin()
+                .Please();
+            var secondPlayer = Create
                 .Player()
                 .WithTailsCoin()
                 .Please();
             var game = Create
                 .Game()
+                .PlayerWithCardsInProgress(firstPlayer, 1)
+                .PlayerWithCardsInTesting(secondPlayer, 2)
                 .WithWipInTesting(2)
-                .PlayerWithCardsInProgress(player, 1)
-                .PlayerWithCardsInTesting(player, 2)
                 .Please();
 
             game.NextRound();
 
-            var cardsInTesting = game.FindCards(_ => _.Column.Type == ColumnType.Testing);
-            Assert.That(cardsInTesting.Count, Is.EqualTo(2));
+            var firstPlayerCards = game.FindCards(_ => _.Player == firstPlayer).Single();
+            Assert.That(firstPlayerCards.Column.Type, Is.EqualTo(ColumnType.InProgress));
         }
     }
 }

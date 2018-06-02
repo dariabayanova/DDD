@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Domain;
-using Moq;
 
 namespace UnitTests.DSL
 {
@@ -9,9 +7,14 @@ namespace UnitTests.DSL
     {
         private readonly Game game = new Game();
 
+        public GameBuilder()
+        {
+            game.Start();
+        }
+
         public GameBuilder PlayerWithCardsInProgress(Player player, int cardsCount)
         {
-            game.Start(new List<Player> {player});
+            game.Join(player);
 
             CreateCardsInProgress(player, cardsCount);
 
@@ -20,7 +23,7 @@ namespace UnitTests.DSL
 
         public GameBuilder PlayerWithCardsInTesting(Player player, int cardsCount)
         {
-            game.Start(new List<Player> {player});
+            game.Join(player);
 
             CreateCardsInTesting(player, cardsCount);
 
@@ -36,6 +39,20 @@ namespace UnitTests.DSL
         public GameBuilder WithWipInTesting(int wip)
         {
             game.Columns.Testing.WIP = wip;
+            return this;
+        }
+
+        public GameBuilder BlockCardInProgress()
+        {
+            var cardInProgress = game.Columns.InProgress.Cards.First(_ => !_.IsBlocked);
+            cardInProgress.IsBlocked = true;
+            return this;
+        }
+
+        public GameBuilder BlockCardInTesting()
+        {
+            var cardInProgress = game.Columns.Testing.Cards.First(_ => !_.IsBlocked);
+            cardInProgress.IsBlocked = true;
             return this;
         }
 
@@ -62,20 +79,6 @@ namespace UnitTests.DSL
                 var card = game.GetCardFromBackLog();
                 game.MoveToInProgress(card, player);
             }
-        }
-
-        public GameBuilder BlockCardInProgress()
-        {
-            var cardInProgress = game.Columns.InProgress.Cards.First(_ => !_.IsBlocked);
-            cardInProgress.IsBlocked = true;
-            return this;
-        }
-
-        public GameBuilder BlockCardInTesting()
-        {
-            var cardInProgress = game.Columns.Testing.Cards.First(_ => !_.IsBlocked);
-            cardInProgress.IsBlocked = true;
-            return this;
         }
     }
 }

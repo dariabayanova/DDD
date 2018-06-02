@@ -8,23 +8,17 @@ namespace Domain
     {
         private readonly int defaultCardsCount = 10;
         public Columns Columns { get; } = new Columns();
-        public List<Player> Players { get; private set; }
+        public HashSet<Player> Players { get; private set; } = new HashSet<Player>();
 
-        public void Start(List<Player> players)
+        public void Start()
         {
-            InitPlayers(players);
-
             GenerateCards(defaultCardsCount);
         }
 
-        private void InitPlayers(List<Player> players)
+        public void Join(Player player)
         {
-            Players = players;
-
-            foreach (var player in players)
-            {
-                player.JoinGame(this);
-            }
+            Players.Add(player);
+            player.JoinGame(this);
         }
 
         public void NextRound()

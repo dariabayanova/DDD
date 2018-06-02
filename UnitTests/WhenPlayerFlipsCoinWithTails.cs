@@ -16,7 +16,8 @@ namespace UnitTests
                 .WithTailsCoin()
                 .Please();
             var game = new Game();
-            game.Start(new List<Player> {player});
+            game.Start();
+            game.Join(player);
 
             game.NextRound();
 
