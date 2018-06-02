@@ -6,7 +6,7 @@ namespace Domain
 {
     public class Game
     {
-        private readonly int defaultCardsCount = 10;
+        private readonly int defaultCardsCount = 10_000;
         public Columns Columns { get; } = new Columns();
         public HashSet<Player> Players { get; private set; } = new HashSet<Player>();
 
