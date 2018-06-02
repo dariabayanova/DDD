@@ -21,6 +21,7 @@
           <e p="AssemblyInfo.cs" t="Include" />
         </e>
         <e p="SideOfCoin.cs" t="Include" />
+        <e p="Statistic.cs" t="Include" />
         <e p="TestingColumn.cs" t="Include" />
       </e>
       <e p="packages" t="ExcludeRecursive" />
@@ -32,6 +33,7 @@
           <e p="Create.cs" t="Include" />
           <e p="GameBuilder.cs" t="Include" />
           <e p="PlayerBuilder.cs" t="Include" />
+          <e p="StatisticBuilder.cs" t="Include" />
         </e>
         <e p="GameTests" t="Include">
           <e p="WhenFlipCoin.cs" t="Include" />
@@ -48,6 +50,7 @@
           <e p="AssemblyInfo.cs" t="Include" />
         </e>
         <e p="UnitTests.csproj" t="IncludeRecursive" />
+        <e p="WhenCollectStatistic.cs" t="Include" />
       </e>
     </e>
     <e p="C:\Users\Dasha Bayanova\.Rider2017.3\system\resharper-host\local\Transient\ReSharperHost\v11\SolutionCaches\_DDD.1897806110.00" t="ExcludeRecursive" />

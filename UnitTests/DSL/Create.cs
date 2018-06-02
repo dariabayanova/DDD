@@ -1,4 +1,7 @@
-﻿namespace UnitTests.DSL
+﻿using System.Runtime.InteropServices.WindowsRuntime;
+using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
+
+namespace UnitTests.DSL
 {
     public class Create
     {
@@ -15,6 +18,11 @@
         public GameBuilder Game()
         {
             return new GameBuilder();
+        }
+
+        public StatisticBuilder Statistic()
+        {
+            return new StatisticBuilder();
         }
     }
 }

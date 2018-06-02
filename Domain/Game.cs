@@ -21,7 +21,7 @@ namespace Domain
             player.JoinGame(this);
         }
 
-        public void NextRound()
+        public virtual void NextRound()
         {
             foreach (var player in Players)
             {
