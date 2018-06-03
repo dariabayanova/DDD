@@ -1,5 +1,6 @@
 ﻿using Domain;
 using Moq;
+using StatisticDomain;
 
 namespace UnitTests.DSL
 {

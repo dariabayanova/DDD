@@ -76,6 +76,10 @@
       <Project>{B59A9BBD-0BC6-4F93-9898-FA818FFF38C9}</Project>
       <Name>Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\StatisticDomain\StatisticDomain.csproj">
+      <Project>{b7c36f14-cf57-4b90-a266-faf8a94f97c5}</Project>
+      <Name>StatisticDomain</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,6 +1,5 @@
-﻿using System.Diagnostics;
-using Domain;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using StatisticDomain;
 
 namespace UnitTests
 {
