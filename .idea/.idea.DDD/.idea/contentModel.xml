@@ -33,6 +33,21 @@
         <e p="Statistic.cs" t="Include" />
         <e p="StatisticDomain.csproj" t="IncludeRecursive" />
       </e>
+      <e p="StatisticUnitTests" t="IncludeRecursive">
+        <e p="BaseTest.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="DSL" t="Include">
+          <e p="Create.cs" t="Include" />
+          <e p="StatisticBuilder.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="StatisticUnitTests.csproj" t="IncludeRecursive" />
+        <e p="WhenCollectStatistic.cs" t="Include" />
+        <e p="WhenFindBestWipForGame.cs" t="Include" />
+      </e>
       <e p="UnitTests" t="IncludeRecursive">
         <e p="BaseTest.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
@@ -41,27 +56,20 @@
           <e p="Create.cs" t="Include" />
           <e p="GameBuilder.cs" t="Include" />
           <e p="PlayerBuilder.cs" t="Include" />
-          <e p="StatisticBuilder.cs" t="Include" />
-        </e>
-        <e p="GameTests" t="Include">
-          <e p="WhenFlipCoin.cs" t="Include" />
-          <e p="WhenGameInits.cs" t="Include" />
-          <e p="WhenGameStarts.cs" t="Include" />
-          <e p="WhenInProgressColumnHasWIP.cs" t="Include" />
-          <e p="WhenPlayerFlipsCoinWithHeads.cs" t="Include" />
-          <e p="WhenPlayerFlipsCoinWithTails.cs" t="Include" />
-          <e p="WhenTestingColumnHasWip.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive" />
         <e p="packages.config" t="Include" />
         <e p="Properties" t="Include">
           <e p="AssemblyInfo.cs" t="Include" />
         </e>
-        <e p="StatisticTests" t="Include">
-          <e p="WhenCollectStatistic.cs" t="Include" />
-        </e>
         <e p="UnitTests.csproj" t="IncludeRecursive" />
-        <e p="WhenFindBestWipForGame.cs" t="Include" />
+        <e p="WhenFlipCoin.cs" t="Include" />
+        <e p="WhenGameInits.cs" t="Include" />
+        <e p="WhenGameStarts.cs" t="Include" />
+        <e p="WhenInProgressColumnHasWIP.cs" t="Include" />
+        <e p="WhenPlayerFlipsCoinWithHeads.cs" t="Include" />
+        <e p="WhenPlayerFlipsCoinWithTails.cs" t="Include" />
+        <e p="WhenTestingColumnHasWip.cs" t="Include" />
       </e>
     </e>
     <e p="C:\Users\Dodo\.Rider2018.1\system\resharper-host\local\Transient\ReSharperHost\v12\SolutionCaches\_DDD.1443758299.00" t="ExcludeRecursive" />

@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using StatisticDomain;
 
-namespace UnitTests
+namespace StatisticUnitTests
 {
     [TestFixture]
     public class WhenFindBestWipForGame : BaseTest

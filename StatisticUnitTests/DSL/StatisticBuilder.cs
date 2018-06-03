@@ -2,7 +2,7 @@
 using Moq;
 using StatisticDomain;
 
-namespace UnitTests.DSL
+namespace StatisticUnitTests.DSL
 {
     public class StatisticBuilder
     {

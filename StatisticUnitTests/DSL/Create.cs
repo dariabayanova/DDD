@@ -1,10 +1,14 @@
-﻿using System.Runtime.InteropServices.WindowsRuntime;
-using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
+﻿using UnitTests.DSL;
 
-namespace UnitTests.DSL
+namespace StatisticUnitTests.DSL
 {
     public class Create
     {
+        public StatisticBuilder Statistic()
+        {
+            return new StatisticBuilder();
+        }
+
         public CoinBuilder Coin()
         {
             return new CoinBuilder();
