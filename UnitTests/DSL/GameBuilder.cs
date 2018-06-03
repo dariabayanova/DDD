@@ -5,6 +5,11 @@ namespace UnitTests.DSL
 {
     public class GameBuilder
     {
+        public GameBuilder()
+        {
+            game.Start();
+        }
+
         private readonly Game game = new Game();
 
         public GameBuilder PlayerWithCardsInProgress(Player player, int cardsCount)
