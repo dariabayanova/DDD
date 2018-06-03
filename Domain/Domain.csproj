@@ -50,6 +50,7 @@
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SideOfCoin.cs" />
+    <Compile Include="Statistic.cs" />
     <Compile Include="TestingColumn.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

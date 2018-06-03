@@ -6,28 +6,22 @@ namespace Domain
 {
     public class Game
     {
-        private readonly int defaultCardsCount = 10;
+        private readonly int defaultCardsCount = 10_000;
         public Columns Columns { get; } = new Columns();
-        public List<Player> Players { get; private set; }
+        public HashSet<Player> Players { get; private set; } = new HashSet<Player>();
 
-        public void Start(List<Player> players)
+        public void Start()
         {
-            InitPlayers(players);
-
             GenerateCards(defaultCardsCount);
         }
 
-        private void InitPlayers(List<Player> players)
+        public void Join(Player player)
         {
-            Players = players;
-
-            foreach (var player in players)
-            {
-                player.JoinGame(this);
-            }
+            Players.Add(player);
+            player.JoinGame(this);
         }
 
-        public void NextRound()
+        public virtual void NextRound()
         {
             foreach (var player in Players)
             {
@@ -62,18 +56,36 @@ namespace Domain
             }
         }
 
+        public void MoveCardFromInProgressToTesting(Card card)
+        {
+            if (card.IsBlocked)
+            {
+                return;
+            }
+
+            var cardsInTesting = Columns.Testing.Cards;
+
+            if (!Columns.Testing.HasWIP || cardsInTesting.Count < Columns.Testing.WIP)
+            {
+                Columns.InProgress.RemoveCard(card);
+                Columns.Testing.AddCard(card);
+            }
+        }
+
+        public void MoveCardFromTestingToDone(Card card)
+        {
+            Columns.Testing.RemoveCard(card);
+            Columns.Done.AddCard(card);
+        }
+
         public Card GetCardFromInProgress(Player player)
         {
             return Columns.InProgress.Cards.First(_ => _.Player == player);
         }
 
-        public void MoveCardFromInProgressToTesting(Card card, Player player)
+        public Card GetCardFromTesting(Player player)
         {
-            if (!card.IsBlocked)
-            {
-                Columns.InProgress.RemoveCard(card);
-                Columns.Testing.AddCard(card);
-            }
+            return Columns.Testing.Cards.First(_ => _.Player == player);
         }
 
         public List<Card> FindCards(Func<Card, bool> func)

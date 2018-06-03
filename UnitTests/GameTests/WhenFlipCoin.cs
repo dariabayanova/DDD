@@ -3,7 +3,7 @@ using Domain;
 using Moq;
 using NUnit.Framework;
 
-namespace UnitTests
+namespace UnitTests.GameTests
 {
     [TestFixture]
     public class WhenFlipCoin

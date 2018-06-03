@@ -20,13 +20,24 @@ namespace Domain
 
             if (sideOfCoin == SideOfCoin.Tails)
             {
-                var inProgressCards = CurrentGame.Columns.InProgress.Cards;
-                var inProgressHasCards = inProgressCards.Any(_ => _.Player == this);
-                var inProgressHasBlockedCards = inProgressCards.Any(_ => _.IsBlocked && _.Player == this);
+                var testingCards = CurrentGame.Columns.Testing.Cards.Where(_ => _.Player == this);
+                var testingHasUnblockedCards = testingCards.Any(_ => !_.IsBlocked);
+                var testingHasBlockedCards = testingCards.Any(_ => _.IsBlocked);
+                var inProgressCards = CurrentGame.Columns.InProgress.Cards.Where(_ => _.Player == this);
+                var inProgressHasBlockedCards = inProgressCards.Any(_ => _.IsBlocked);
+                var inProgressHasUnblockedCards = inProgressCards.Any(_ => !_.IsBlocked);
 
-                if (!inProgressHasCards)
+                if (testingHasUnblockedCards)
                 {
-                    GetNewCardFromBacklog();
+                    MoveCardFromTestingToDone();
+                }
+                else if (testingHasBlockedCards)
+                {
+                    UnblockCardInTesting();
+                }
+                else if (inProgressHasUnblockedCards)
+                {
+                    MoveCardFromInProgressToTesting();
                 }
                 else if (inProgressHasBlockedCards)
                 {
@@ -34,7 +45,7 @@ namespace Domain
                 }
                 else
                 {
-                    MoveCardFromInProgressToTesting();
+                    GetNewCardFromBacklog();
                 }
             }
 
@@ -45,7 +56,6 @@ namespace Domain
             }
         }
 
-
         private SideOfCoin FlipCoin()
         {
             var coin = this.coin;
@@ -55,21 +65,37 @@ namespace Domain
 
         private void BlockCardInProgress()
         {
-            var cardInProgress = CurrentGame.Columns.InProgress.Cards.First(_ => !_.IsBlocked && _.Player == this);
-            cardInProgress.IsBlocked = true;
+            var cardInProgress = CurrentGame.Columns.InProgress.Cards.FirstOrDefault(_ => !_.IsBlocked && _.Player == this);
+            if (cardInProgress != null)
+            {
+                cardInProgress.IsBlocked = true;
+            }
         }
 
         private void UnblockCardInProgress()
         {
             var blockedCardInProgress =
-                CurrentGame.Columns.InProgress.Cards.First(_ => _.IsBlocked && _.Player == this);
+                CurrentGame.Columns.InProgress.Cards.FirstOrDefault(_ => _.IsBlocked && _.Player == this);
             blockedCardInProgress.IsBlocked = false;
+        }
+
+        private void UnblockCardInTesting()
+        {
+            var blockedCardInTesting =
+                CurrentGame.Columns.Testing.Cards.First(_ => _.IsBlocked && _.Player == this);
+            blockedCardInTesting.IsBlocked = false;
         }
 
         private void MoveCardFromInProgressToTesting()
         {
             var card = CurrentGame.GetCardFromInProgress(this);
-            CurrentGame.MoveCardFromInProgressToTesting(card, this);
+            CurrentGame.MoveCardFromInProgressToTesting(card);
+        }
+
+        private void MoveCardFromTestingToDone()
+        {
+            var card = CurrentGame.GetCardFromTesting(this);
+            CurrentGame.MoveCardFromTestingToDone(card);
         }
 
         private void GetNewCardFromBacklog()

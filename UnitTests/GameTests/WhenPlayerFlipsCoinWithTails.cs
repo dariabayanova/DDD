@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Domain;
 using NUnit.Framework;
 
-namespace UnitTests
+namespace UnitTests.GameTests
 {
     [TestFixture]
     public class WhenPlayerFlipsCoinWithTails : BaseTest
@@ -16,7 +15,8 @@ namespace UnitTests
                 .WithTailsCoin()
                 .Please();
             var game = new Game();
-            game.Start(new List<Player> {player});
+            game.Start();
+            game.Join(player);
 
             game.NextRound();
 
@@ -25,7 +25,7 @@ namespace UnitTests
         }
 
         [Test]
-        public void BlockedCardWasUnblocked()
+        public void BlockedCardInProgressWasUnblocked()
         {
             var player = Create
                 .Player()
@@ -44,6 +44,25 @@ namespace UnitTests
         }
 
         [Test]
+        public void BlockedCardInTestingWasUnblocked()
+        {
+            var player = Create
+                .Player()
+                .WithTailsCoin()
+                .Please();
+            var game = Create
+                .Game()
+                .PlayerWithCardsInTesting(player, 1)
+                .BlockCardInTesting()
+                .Please();
+
+            game.NextRound();
+
+            var playerCard = game.FindCards(_ => _.Player == player).Single();
+            Assert.False(playerCard.IsBlocked);
+        }
+
+        [Test]
         public void CardInProgressWasMovedToTesting()
         {
             var player = Create
@@ -57,8 +76,26 @@ namespace UnitTests
 
             game.NextRound();
 
-            var cardsInTesting = game.Columns.Testing.Cards.First(_ => _.Player == player);
-            Assert.That(cardsInTesting.Player, Is.EqualTo(player));
+            var playerCard = game.FindCards(_ => _.Player == player).Single();
+            Assert.That(playerCard.Column.Type, Is.EqualTo(ColumnType.Testing));
+        }
+
+        [Test]
+        public void CardInTestingWasMovedToDone()
+        {
+            var player = Create
+                .Player()
+                .WithTailsCoin()
+                .Please();
+            var game = Create
+                .Game()
+                .PlayerWithCardsInTesting(player, 1)
+                .Please();
+
+            game.NextRound();
+
+            var playerCard = game.FindCards(_ => _.Player == player).Single();
+            Assert.That(playerCard.Column.Type, Is.EqualTo(ColumnType.Done));
         }
     }
 }

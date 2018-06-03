@@ -1,8 +1,7 @@
-﻿using System.Linq;
-using Domain;
+﻿using Domain;
 using NUnit.Framework;
 
-namespace UnitTests
+namespace UnitTests.GameTests
 {
     [TestFixture]
     public class WhenInProgressColumnHasWip : BaseTest
